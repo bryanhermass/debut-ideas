@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "dependencies": {
-      "kafkajs": "^1.15.0",
-      "pg": "^8.5.1"
+        "kafkajs": "^1.16.0",
+        "pg": "^8.5.1"
     }
-  }
+}
