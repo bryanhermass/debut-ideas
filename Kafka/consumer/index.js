@@ -4,11 +4,11 @@ const { Pool } = require('pg');
 // Configurar la conexión a Kafka
 const kafka = new Kafka({
   clientId: 'my-app',
-  brokers: ['localhost:9092']
+  brokers: ['kafka-broker-1:29092']
 });
 
 // Crear un consumidor de Kafka
-let consumer = kafka.consumer({ groupId: 'my-group' });
+let consumer = kafka.consumer({ groupId: 'my-consumer' });
 
 // Conectar el consumidor a Kafka
 consumer.connect().then(() => {
@@ -20,7 +20,7 @@ consumer.connect().then(() => {
 // Configurar la conexión a la base de datos Postgres
 const pool = new Pool({
   user: 'postgres',
-  host: 'localhost',
+  host: 'postgres',
   database: 'postgres',
   password: 'postgres',
   port: 5432,

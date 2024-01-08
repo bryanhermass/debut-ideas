@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 app.post('/send', async (req, res) => {
   const { name, surname } = req.body;
   try {
-    await axios.post('http://localhost:4000/event', { name, surname });
+    await axios.post('http://producer:4000/event', { name, surname });
     console.info(`Event sent to producer: ${name} ${surname}`);
     res.send({ status: 'ok' });
   } catch (error) {

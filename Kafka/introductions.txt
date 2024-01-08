@@ -1,0 +1,3 @@
+
+##Query para ver los nombres y los apellidos insertados en la tabla
+ SELECT * FROM events;

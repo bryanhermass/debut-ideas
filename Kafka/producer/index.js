@@ -5,7 +5,7 @@ app.use(express.json());
 
 const kafka = new Kafka({
   clientId: 'my-app',
-  brokers: ['localhost:9092']
+  brokers: ['kafka-broker-1:29092']
 });
 
 let producer = kafka.producer();
