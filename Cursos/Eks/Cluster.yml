@@ -1,0 +1,78 @@
+## Documentacion de la creacion del cluster
+## https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: co-staging
+  version: "1.26"
+  region: us-east-1
+iam:
+  withOIDC: true
+vpc:
+  subnets:
+    private: ## Subnets privadas que usaran los nodos y los servicios 
+      us-east-1b: { id: subnet-01292c8c40c432512 } #10.12.16.0/20-private
+      us-east-1c: { id: subnet-0194fca6c80954105 } #10.12.32.0/20-private
+      us-east-1d: { id: subnet-08404af7b87261d56 } #10.12.48.0/20-private
+      us-east-1e: { id: subnet-0575b64cf4874205c } #10.12.64.0/20-private
+      us-east-1f: { id: subnet-0e4d2e6be5585876a } #10.12.80.0/20-private
+  clusterEndpoints: ## Endpoints de acceso al cluster privado y publico
+    privateAccess: true
+    publicAccess: true
+  publicAccessCIDRs: ## Rangos de IP que pueden acceder al cluster publico
+    - 3.214.171.190/32
+    - 207.248.201.200/32
+  securityGroup: 'sg-092d26d72716dc09b' ## Security group que se usara para el cluster
+secretsEncryption:
+ keyARN: arn:aws:kms:us-east-1:271279096581:key/mrk-854b66c83e2e4b2f83f496bb66c95f05
+addons:
+  - name: coredns
+    version: "v1.9.3-eksbuild.3"
+    configurationValues: |-
+      replicaCount: 1
+      corefile: |
+          .:53 {
+              errors
+              health
+              kubernetes cluster.local in-addr.arpa ip6.arpa {
+                pods insecure
+                fallthrough in-addr.arpa ip6.arpa
+              }
+              prometheus :9153
+              forward . /etc/resolv.conf
+              cache 30
+              loop
+              reload
+              loadbalance
+          }
+  - name: kube-proxy 
+    version: "v1.26.4-eksbuild.1"
+  - name: vpc-cni
+    version: "v1.12.6-eksbuild.2"
+    configurationValues:
+     '{"env":{"ENABLE_PREFIX_DELEGATION":"true", "WARM_ENI_TARGET":"2"}}'
+  - name: aws-ebs-csi-driver
+    version: "v1.17.0-eksbuild.1"
+managedNodeGroups:
+  - name: spot-staging-t3-small #nombre de los nodos
+    availabilityZones: ["us-east-1b", "us-east-1c", "us-east-1d", "us-east-1e", "us-east-1f"] #zonas de disponibilidad donde se crearan los nodos
+    spot: true #si se usaran nodos spot
+    instanceTypes: #tipo de instancia que se usara
+      - t3.small
+    ssh: #llave ssh que se usara para acceder a los nodos
+      publicKeyName: co_k8s_key
+      allow: true #si se permite el acceso ssh
+    privateNetworking: true #si se usara red privada, se recomienda usar red privada
+    desiredCapacity: 1 #cantidad de nodos que se crearan
+    minSize: 1 #cantidad minima de nodos
+    maxSize: 1 #cantidad maxima de nodos
+    volumeSize: 80 #tamano del disco que se usara
+    volumeType: gp2 #tipo de disco que se usara
+    instanceName: spot-staging-t3-small #nombre de la instancia
+    labels:
+      application: services #label que se le asignara a los nodos
+      nodegroup-type: spot-instances #label que se le asignara a los nodos
+      instance_availability: preemptible #label que se le asignara a los nodos
+    maxPodsPerNode: 110 #cantidad maxima de pods por nodo
+    amiFamily: AmazonLinux2 #ami que se usara para los nodos

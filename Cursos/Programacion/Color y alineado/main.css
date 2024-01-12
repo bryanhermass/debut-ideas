@@ -1,0 +1,13 @@
+body {
+    background-color: #0cb6c8;
+}
+p {
+    color: #fff;
+    text-align: center; //texto Alineado al centro
+}
+
+a {
+    color: #fff;
+    text-decoration: none; //quitar subrayado
+    text-transform: uppercase; //texto en mayusculas
+}  

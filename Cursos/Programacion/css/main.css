@@ -1,0 +1,25 @@
+/* body {
+    background-color: #872c2c; 
+}
+
+.caja {
+    margin: 8px;
+}
+
+#parrafo {
+    color: #4d09b3;
+}
+
+.etiqueta {
+    color: #b3096c;
+} */
+
+
+.caja {
+    margin: 8px;
+    padding: 8px; 
+    border: solid;
+    border-width: 1px;
+    height: auto;
+    width: auto;
+}
