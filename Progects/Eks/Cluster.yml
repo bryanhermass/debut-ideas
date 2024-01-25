@@ -23,7 +23,7 @@ vpc:
   publicAccessCIDRs: ## Rangos de IP que pueden acceder al cluster publico
     - 3.214.171.190/32
     - 207.248.201.200/32
-  securityGroup: 'sg-092d26d72716dc09b' ## Security group que se usara para el cluster
+  securityGroup: 'sg-092d26d72716dc09b' ## Security group que se usara para el cluster, su valor por defecto es el sg creado por eksctl
 secretsEncryption:
  keyARN: arn:aws:kms:us-east-1:271279096581:key/mrk-854b66c83e2e4b2f83f496bb66c95f05
 addons:

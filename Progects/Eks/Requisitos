@@ -1,0 +1,57 @@
+
+Primera frase : 
+
+    Vamos a crear tu primer cluster de kubernetes en aws con eksctl en menos de 10 minutos
+
+Segunda frase : 
+    
+    Requisitos : 
+
+    1 Cuenta aws
+    2 Iam
+    3 aws cli configurado
+    4 kubctl y eksctl intalado 
+    3 VPC y Subredes
+    hasta el punto 4 se los dejo como tarea, cuando lo tengas instalado   
+
+Dibujando diagrama :
+  para que quede mas claro lo que vamos hacer dibujaremos un diagrama
+
+Explicando el codigo :
+
+lanzar el codigo : 
+Mostrar como se esta creado el stack de cloudfront 
+
+Mostrar el cluster creado:
+
+Borrar el cluster para no tener gastos en la cuenta 
+
+Siguiente desafio....
+
+
+
+
+¡Bienvenidos a este emocionante viaje hacia la creación de tu propio cluster de Kubernetes en AWS con eksctl en menos de 10 minutos! Antes de sumergirnos en la acción, asegúrate de tener los siguientes requisitos:
+
+1. **Cuenta AWS:** Asegúrate de tener una cuenta activa en AWS para poder acceder a los servicios necesarios.
+
+2. **IAM (Identity and Access Management):** Configura tu IAM para garantizar los permisos necesarios para operar con Kubernetes en AWS.
+
+3. **AWS CLI Configurado:** Asegúrate de tener la AWS Command Line Interface (CLI) correctamente configurada con tus credenciales.
+
+4. **kubectl y eksctl Instalados:** Instala las herramientas kubectl y eksctl en tu entorno. Puedes encontrar información sobre cómo hacerlo en la documentación oficial.
+
+5. **VPC y Subredes:** Necesitarás una VPC (Virtual Private Cloud) con sus respectivas subredes configuradas. Los detalles de configuración los dejaremos como tarea hasta el punto 4.
+
+
+Ahora, para hacer las cosas más visuales y comprensibles, vamos a dibujar un diagrama que represente la arquitectura que estaremos construyendo. Esto nos ayudará a visualizar cada componente y cómo interactúan entre sí.
+
+Pasemos al meollo del asunto: el código. En el próximo paso, lanzaremos el código necesario para crear nuestro stack de CloudFormation. Pero no te preocupes, estaré contigo paso a paso para explicar cada parte del código y su función.
+
+¡Es hora de lanzar el código! Observaremos cómo se crea el stack de CloudFormation y, como valor agregado, veremos el cluster de Kubernetes tomando forma.
+
+Ahora, atención, porque vamos a mostrar el cluster recién creado. Verás cómo tus esfuerzos se materializan en un entorno de Kubernetes totalmente funcional.
+
+Pero la magia no acaba aquí. Después de explorar tu cluster, aprenderemos a borrarlo correctamente para evitar gastos innecesarios en tu cuenta AWS. La gestión eficiente de tus recursos es clave, ¡así que presta atención!
+
+Y para mantenerte emocionado, te presentaré el siguiente desafío. Pero eso será en la siguiente entrega. ¡Así que prepárate para seguir aprendiendo y avanzando en tu viaje hacia el dominio de Kubernetes en AWS! ¿Listo para el próximo desafío? ¡Vamos a ello!
